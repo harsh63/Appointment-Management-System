@@ -64,3 +64,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Project based gem goes here
 gem 'materialize-sass'
 gem 'devise'
+gem 'material_icons'
