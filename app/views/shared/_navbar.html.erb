@@ -1,0 +1,30 @@
+<nav class="nav-extended gradient-45deg-indigo-purple">
+  <div class="nav-wrapper">
+    <i class="material-icons brand-logo pink-text lighten-3" style="font-size:50px;">ac_unit</i>
+    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+      <% unless patient_signed_in? %>
+        <li><%= link_to 'Login', new_patient_session_path, class: 'btn gradient-45deg-green' %></li>
+        <li><%= link_to 'Sign up', new_patient_registration_path, class: 'btn gradient-45deg-green' %></li>
+      <% end %>
+      <% if patient_signed_in? %>
+        <li><%= link_to 'Log out', destroy_patient_session_path, method: :delete, class: 'btn gradient-45deg-green' %></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
+<ul class="sidenav" id="mobile-demo">
+  <% unless patient_signed_in? %>
+    <li><%= link_to 'Login', new_patient_session_path %></li>
+    <li><%= link_to 'Sign up', new_patient_registration_path %></li>
+  <% end %>
+  <% if patient_signed_in? %>
+    <li><%= link_to 'Log out', destroy_patient_session_path, method: :delete %></li>
+  <% end %>
+</ul>
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems);
+  });
+</script>
