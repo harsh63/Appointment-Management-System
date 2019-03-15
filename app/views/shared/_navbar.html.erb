@@ -3,24 +3,24 @@
     <i class="material-icons brand-logo pink-text lighten-3" style="font-size:50px;">location_city</i>
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
-      <% unless patient_signed_in? %>
-        <li><%= link_to 'Login', new_patient_session_path, class: 'btn gradient-45deg-green' %></li>
-        <li><%= link_to 'Sign up', new_patient_registration_path, class: 'btn gradient-45deg-green' %></li>
+      <% unless user_signed_in? %>
+        <li><%= link_to 'Login', new_user_session_path, class: 'btn gradient-45deg-green' %></li>
+        <li><%= link_to 'Sign up', new_user_registration_path, class: 'btn gradient-45deg-green' %></li>
       <% end %>
-      <% if patient_signed_in? %>
-        <li><%= link_to 'Profile', edit_patient_registration_path, class: 'btn gradient-45deg-green' %></li>
-        <li><%= link_to 'Log out', destroy_patient_session_path, method: :delete, class: 'btn gradient-45deg-green' %></li>
+      <% if user_signed_in? %>
+        <li><%= link_to 'Profile', edit_user_registration_path, class: 'btn gradient-45deg-green' %></li>
+        <li><%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'btn gradient-45deg-green' %></li>
       <% end %>
     </ul>
   </div>
 </nav>
 <ul class="sidenav" id="mobile-demo">
-  <% unless patient_signed_in? %>
-    <li><%= link_to 'Login', new_patient_session_path %></li>
-    <li><%= link_to 'Sign up', new_patient_registration_path %></li>
+  <% unless user_signed_in? %>
+    <li><%= link_to 'Login', new_user_session_path %></li>
+    <li><%= link_to 'Sign up', new_user_registration_path %></li>
   <% end %>
-  <% if patient_signed_in? %>
-    <li><%= link_to 'Log out', destroy_patient_session_path, method: :delete %></li>
+  <% if user_signed_in? %>
+    <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
   <% end %>
 </ul>
 <script type="text/javascript">
