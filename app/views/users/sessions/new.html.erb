@@ -1,26 +1,44 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="container">
+  <div class="row">
+    <div class="col s12 m6 l8 offset-l2 offset-m3">
+      <div class="card">
+        <div class="card-image">
+          <div class="gradient-45deg-red-pink card-top"></div>
+          <span class="card-title">
+            <h5>Log in</h5>
+          </span>
+        </div>
+        <div class="card-content">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+            <div class="input-field">
+              <i class="material-icons prefix">account_circle</i>
+              <%= f.email_field :email, autofocus: true,required: :true%>
+              <%= f.label :email %>
+            </div>
+            <div class="input-field">
+              <i class="material-icons prefix">lock</i>
+              <%= f.password_field :password ,required: :true%>
+              <%= f.label :password %><br />
+            </div>
+            <% if devise_mapping.rememberable? %>
+              <div class="input">
+                <%= f.label :remember_me do %>
+                  <%= f.check_box :remember_me %>
+                  <span>Remember me</span>
+                <% end %>
+              </div>
+            <% end %>
+            <div class="input-field">
+              <div class="actions">
+                <%= f.submit "Log in", class: 'white-text waves-effect waves-light btn gradient-45deg-red-pink gradient-shadow' %>
+              </div>
+            <% end %>
+          </div>
+          <br>
+          <%= render "devise/shared/links"%>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>
